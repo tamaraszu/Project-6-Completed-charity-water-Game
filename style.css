@@ -16,12 +16,21 @@
   --ash:#f4f6f8;
   --gray:#7c8a99;
   --line:#d7dee5;
+
+  /* ---- Typography ----
+     --font-proxima : Nunito Sans  (mirrors Proxima Nova — geometric sans, great for UI)
+     --font-avenir  : DM Sans      (mirrors Avenir — humanist sans, great for body copy)
+     --font-georgia : Georgia      (built-in serif, same as charity:water's Georgia)    */
+  --font-proxima: 'Nunito Sans', 'Proxima Nova', Arial, sans-serif;
+  --font-avenir:  'DM Sans', 'Avenir', Helvetica, sans-serif;
+  --font-georgia: Georgia, 'Times New Roman', serif;
+
   font-size:16px;
 }
 *{box-sizing:border-box;}
 body{
   margin:0;
-  font-family:'Segoe UI', Helvetica, Arial, sans-serif;
+  font-family: var(--font-proxima);
   background:var(--ash);
   color:var(--navy);
   min-height:100vh;
@@ -89,14 +98,39 @@ body{
 #screen-start{justify-content:space-between;}
 .start-mid{text-align:center;margin-top:30px;}
 .start-title{
-  font-size:2.6rem;font-weight:800;letter-spacing:1px;
+  font-family:var(--font-georgia);
+  font-size:2.6rem;font-weight:700;letter-spacing:1px;
   color:var(--navy);line-height:1.05;margin:0;
 }
 .start-title .by{
-  display:block;font-size:1rem;font-weight:600;color:var(--gray);
-  letter-spacing:6px;margin:6px 0;
+  display:block;
+  font-family:var(--font-proxima);
+  font-size:0.9rem;font-weight:600;color:var(--gray);
+  letter-spacing:8px;margin:6px 0;
 }
-.tagline{color:var(--gray);font-size:0.95rem;margin:14px 0 26px;line-height:1.5;}
+.tagline{
+  font-family:var(--font-avenir);
+  color:var(--gray);font-size:0.95rem;margin:14px 0 26px;line-height:1.6;
+}
+
+/* Hero photo in start screen */
+.start-art{
+  margin-top:20px;
+  border-radius:16px;
+  overflow:hidden;
+  width:100%;
+  height:200px;
+  position:relative;
+}
+.hero-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 20%;
+  display:block;
+  border-radius:16px;
+}
+
 .btn{
   display:block;width:100%;padding:14px;border-radius:12px;
   border:none;font-size:1rem;font-weight:700;cursor:pointer;
@@ -110,19 +144,9 @@ body{
 /* charity: water branded external link button */
 .btn-cw{background:var(--blue);color:#fff;border:none;}
 .btn-cw:hover{background:#1a87de;}
-.btn-cw{background:var(--blue);color:#fff;border:none;}
-.btn-cw:hover{background:#1a8de0;}
-.start-art{
-  margin-top:20px;height:170px;border-radius:16px;background:linear-gradient(#dceaf5,#eef3f7);
-  position:relative;overflow:hidden;
-}
-.start-art .tower{position:absolute;right:90px;bottom:10px;font-size:60px;}
-.start-art .house{position:absolute;right:20px;bottom:10px;font-size:48px;}
-.start-art .cloud{position:absolute;font-size:22px;color:#fff;opacity:.9;}
 
-/* ---------- Screen 2: Level Select ---------- */
-.levels-title{text-align:center;margin:6px 0 2px;font-size:1.5rem;font-weight:800;color:var(--navy);}
-.levels-sub{text-align:center;color:var(--gray);font-size:0.85rem;margin-bottom:18px;}
+.levels-title{font-family:var(--font-georgia);text-align:center;margin:6px 0 2px;font-size:1.5rem;font-weight:700;color:var(--navy);}
+.levels-sub{font-family:var(--font-avenir);text-align:center;color:var(--gray);font-size:0.85rem;margin-bottom:18px;}
 .level-grid{
   display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
 }
@@ -241,8 +265,8 @@ body{
   border:1px solid var(--line);border-radius:14px;padding:18px;background:#fafcfd;
   max-width:320px;
 }
-.fact-card h3{margin:0 0 10px;color:var(--navy);}
-.fact-card p{color:var(--gray);font-size:0.9rem;line-height:1.5;margin:8px 0;}
+.fact-card h3{font-family:var(--font-georgia);margin:0 0 10px;color:var(--navy);}
+.fact-card p{font-family:var(--font-avenir);color:var(--gray);font-size:0.9rem;line-height:1.6;margin:8px 0;}
 
 .small-link{color:var(--blue);font-size:0.85rem;text-decoration:underline;cursor:pointer;display:block;margin-top:10px;}
 
@@ -300,8 +324,12 @@ body{
   .btn{ width:auto; min-width:160px; display:inline-block; margin-right:10px; }
   .start-art{
     width:48%;
-    height:320px;
+    height:340px;
     margin-top:0;
+    border-radius:20px;
+  }
+  .hero-img{
+    border-radius:20px;
   }
 
   /* Level select: wider grid, more columns, like the laptop wireframe */

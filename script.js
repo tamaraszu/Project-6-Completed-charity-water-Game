@@ -390,6 +390,7 @@ function resetGame() {
   state.unlocked = 1;
   state.stars    = {};
   saveState();
+  renderLevels();
   goTo('screen-start');
 }
 
