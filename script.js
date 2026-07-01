@@ -331,8 +331,8 @@ function pauseGame() {
   if (!state.timer) return;
   clearInterval(state.timer);
   state.timer = null;
-  showToast('Paused — resuming in 2s…', 'bad');
-  setTimeout(() => startTimer(), 2000);
+  showToast('Paused — resuming in 10s…', 'bad');
+  setTimeout(() => startTimer(), 10000);
 }
 
 function resetLevel() {
