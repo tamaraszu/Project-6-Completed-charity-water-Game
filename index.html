@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drop by Drop — charity: water</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="device">
+
+  <!-- SCREEN 1: START -->
+  <div class="screen active" id="screen-start">
+    <div class="topbar">
+      <div class="brand"><div class="logo">💧</div>charity: water</div>
+      <div class="pill">💧 <span id="score-start">0</span></div>
+    </div>
+    <div class="start-mid">
+      <h1 class="start-title">DROP<span class="by">BY</span>DROP</h1>
+      <p class="tagline">Connect pipes. Deliver clean water.<br>Change lives.</p>
+      <button class="btn btn-primary" onclick="goTo('screen-levels')">PLAY</button>
+      <button class="btn btn-secondary" onclick="goTo('screen-about')">ABOUT THE MISSION</button>
+    </div>
+    <div class="start-art">
+      <span class="cloud" style="left:20px;top:14px;">☁️</span>
+      <span class="cloud" style="left:120px;top:28px;">☁️</span>
+      <span class="tower">🗼</span>
+      <span class="house">🏠</span>
+    </div>
+  </div>
+
+  <!-- ABOUT SCREEN -->
+  <div class="screen" id="screen-about">
+    <div class="back-row">
+      <div class="iconbtn" onclick="goTo('screen-start')">←</div>
+      <div class="brand"><div class="logo">💧</div>charity: water</div>
+      <div style="width:34px;"></div>
+    </div>
+    <div style="text-align:center;margin-top:30px;">
+      <div class="globe">🌍</div>
+      <h2 style="color:var(--navy);">About the Mission</h2>
+      <p style="color:var(--gray);font-size:0.92rem;line-height:1.6;padding:0 6px;">
+        charity: water is a non-profit on a mission to bring clean and safe drinking water to every person on the planet.
+        Every pipe you connect in this game represents a real connection — clean water reaching a family, a school, a community.
+      </p>
+      <button class="btn btn-primary" style="margin-top:20px;" onclick="goTo('screen-start')">BACK TO HOME</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 2: LEVEL SELECT -->
+  <div class="screen" id="screen-levels">
+    <div class="back-row">
+      <div class="iconbtn" onclick="goTo('screen-start')">←</div>
+      <div class="brand"><div class="logo">💧</div>charity: water</div>
+      <div class="pill">💧 <span id="score-levels">0</span></div>
+    </div>
+    <div class="levels-title">LEVELS</div>
+    <div class="levels-sub">Complete levels to bring clean water<br>to more communities.</div>
+    <div class="level-grid" id="level-grid"></div>
+    <div class="legend">
+      <span>★ = Completed</span>
+      <span>🔒 = Locked</span>
+    </div>
+  </div>
+
+  <!-- SCREEN 3: GAMEPLAY -->
+  <div class="screen" id="screen-game">
+    <div class="feedback-toast" id="toast"></div>
+    <div class="topbar">
+      <div class="pill" id="level-badge">LEVEL 1</div>
+      <div class="game-meta">
+        <div class="timer">⏱ <span id="timer-display">00:00</span></div>
+        <div class="iconbtn" onclick="resetLevel()" title="Reset level">↺</div>
+        <div class="iconbtn" onclick="pauseGame()">⏸</div>
+      </div>
+    </div>
+    <div class="goal-banner"><b>GOAL</b>Get clean water to the village!</div>
+    <div class="game-content">
+      <div class="grid-wrap">
+        <div class="grid" id="grid"></div>
+        <div class="tray-row">
+          <div class="tray" id="tray"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 4: LEVEL COMPLETE -->
+  <div class="screen" id="screen-complete">
+    <h2 style="margin-bottom:0;color:var(--gray);font-weight:700;" id="complete-level-label">LEVEL 1</h2>
+    <h1 style="margin-top:4px;color:var(--navy);">COMPLETE!</h1>
+    <div class="complete-stars" id="complete-stars"></div>
+    <div class="complete-card">
+      <div class="drop">💧 +<span id="complete-points">100</span></div>
+      <div class="complete-art">🚰</div>
+      <p style="color:var(--gray);font-size:0.9rem;">You helped bring clean water to the community!</p>
+    </div>
+    <button class="btn btn-primary" onclick="goToFact()">NEXT</button>
+    <button class="btn btn-secondary" onclick="goTo('screen-levels');renderLevels();">MAIN MENU</button>
+  </div>
+
+  <!-- SCREEN 5: FACT -->
+  <div class="screen" id="screen-fact">
+    <div class="back-row" style="width:100%;">
+      <div class="iconbtn" onclick="goTo('screen-levels');renderLevels();">←</div>
+      <div style="flex:1;"></div>
+      <div class="iconbtn">♡</div>
+    </div>
+    <div class="globe">🌍💧</div>
+    <div class="fact-card">
+      <h3>DID YOU KNOW?</h3>
+      <p id="fact-text">Millions of people still don't have access to clean water.</p>
+      <p>Every connection makes a difference.</p>
+    </div>
+    <button class="btn btn-primary" style="margin-top:20px;width:280px;" onclick="goToNextLevelOrDonate()">CONTINUE</button>
+  </div>
+
+  <!-- SCREEN 6: DONATE -->
+  <div class="screen" id="screen-donate">
+    <div class="back-row" style="width:100%;">
+      <div class="iconbtn" onclick="goTo('screen-levels');renderLevels();">←</div>
+      <div style="flex:1;"></div>
+      <div class="iconbtn">♡</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:60px;">🚰</div>
+      <div class="fact-card" style="margin:14px auto;">
+        <h3 style="color:var(--navy-dark);">YOUR IMPACT</h3>
+        <p>Your support can bring clean water to communities in need.</p>
+        <div style="display:flex;gap:8px;justify-content:center;margin:14px 0;">
+          <div class="donate-opt">
+            <b>$5</b><br><span class="donate-people">1,800 people</span>
+          </div>
+          <div class="donate-opt donate-opt-selected">
+            <b>$15</b><br><span class="donate-people">5,400 people</span>
+          </div>
+          <div class="donate-opt">
+            <b>$30</b><br><span class="donate-people">10,800 people</span>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="window.open('https://www.charitywater.org','_blank')">DONATE NOW</button>
+        <span class="small-link" onclick="goTo('screen-final')">Maybe later</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL CONGRATS SCREEN -->
+  <div class="screen" id="screen-final">
+    <div class="globe">🎉💧🎉</div>
+    <h1 style="color:var(--navy);">YOU DID IT!</h1>
+    <p style="color:var(--gray);padding:0 10px;line-height:1.5;">
+      You completed all 10 levels of Drop by Drop and helped bring clean water to every village on the map.
+    </p>
+    <p style="color:var(--gray);padding:0 10px;line-height:1.5;">
+      Real change starts with real action — learn more about how you can help charity: water reach more communities.
+    </p>
+    <button class="btn btn-primary" style="width:280px;" onclick="window.open('https://www.charitywater.org','_blank')">VISIT CHARITY: WATER</button>
+    <button class="btn btn-secondary" style="width:280px;" onclick="resetGame()">PLAY AGAIN</button>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
