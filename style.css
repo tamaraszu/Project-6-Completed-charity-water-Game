@@ -107,6 +107,11 @@ body{
 .btn-primary:hover{background:var(--yellow-dark);}
 .btn-secondary{background:#fff;color:var(--navy);border:1px solid var(--line);}
 .btn-secondary:hover{background:#f4f6f8;}
+/* charity: water branded external link button */
+.btn-cw{background:var(--blue);color:#fff;border:none;}
+.btn-cw:hover{background:#1a87de;}
+.btn-cw{background:var(--blue);color:#fff;border:none;}
+.btn-cw:hover{background:#1a8de0;}
 .start-art{
   margin-top:20px;height:170px;border-radius:16px;background:linear-gradient(#dceaf5,#eef3f7);
   position:relative;overflow:hidden;
@@ -196,7 +201,7 @@ body{
   padding-top:14px;
 }
 .tray{
-  flex:1;display:flex;gap:10px;background:#fff;border:1px dashed var(--line);
+  flex:1;display:flex;flex-wrap:wrap;gap:10px;background:#fff;border:1px dashed var(--line);
   border-radius:12px;padding:10px;justify-content:center;
 }
 .tray-piece{
